@@ -1,20 +1,46 @@
-// Welcome to your new AL extension.
-// Remember that object names and IDs should be unique across all extensions.
-// AL snippets start with t*, like tpageext - give them a try and happy coding!
-
-namespace DefaultPublisher.ALProject4;
-
-using Microsoft.Sales.Customer;
-using Microsoft.Foundation.Reporting;
 
 pageextension 50100 CustomerListExt extends "Customer List"
 {
+    actions
+    {
+        addafter(Action24)
+        {
+            action(ActionName)
+            {
+                ApplicationArea = All;
+                Caption = 'Layout selection', comment = 'NLB="YourLanguageCaption"';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Report;
+
+                trigger OnAction()
+                var
+                    reporlayoutselection: Record "Report Layout Selection";
+                begin
+                    reporlayoutselection.SetTempLayoutSelectedName('layout1');
+                    Report.Run(50100, false, false);
+
+                end;
+            }
+            action(ProgressBar)
+            {
+                Caption = 'Progress Bar';
+                Promoted = true;
+                PromotedCategory = process;
+                Image = Process;
+                trigger OnAction()
+                var
+                begin
+
+                end;
+            }
+        }
+    }
     trigger OnOpenPage();
     var
-        reporlayoutselection: Record "Report Layout Selection";
     begin
-        reporlayoutselection.SetTempLayoutSelectedName('layout1');
-        Report.Run(50100, false, false);
 
     end;
+
 }

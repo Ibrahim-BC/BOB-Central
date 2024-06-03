@@ -38,12 +38,12 @@ report 50100 "rendering rep"
         layout(layout1)
         {
             Type = RDLC;
-            LayoutFile = 'layout1.rdlc';
+            LayoutFile = 'layouts\layout1.rdlc';
         }
         layout(layout2)
         {
             Type = RDLC;
-            LayoutFile = 'layout2.rdlc';
+            LayoutFile = 'layouts\layout2.rdlc';
         }
     }
 }
