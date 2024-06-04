@@ -13,13 +13,22 @@ codeunit 50100 RandomAhh
 
     procedure ProgressBar(Percentage: Decimal) ReturnValue: Text
     var
+        i: Integer;
         fillcount: Integer;
-        ProgressBarTxt: Label '%1 %2%3', Comment = '%1 = First Half of Progress Bar; %2 Percentage Text; %3 Second Half of Progress Bar ';
+        ProgressBarTxt: Label '%1 %2 %3', Comment = '%1 = First Half of Progress Bar; %2 Percentage Text; %3 Second Half of Progress Bar ';
     begin
         FillCount := round(Percentage / 2.777777778, 1);
         ReturnValue := PadStr('', fillcount, '█');
         ReturnValue := PadStr(ReturnValue, 36, '▒');
-        //ReturnValue := PadStr(ReturnValue, 36, '😒');
+
+
+        // ReturnValue := PadStr('', fillcount, '🤮');
+        // ReturnValue := PadStr(ReturnValue, 36, '🤢');
+        // for i := 1 to FillCount do
+        //     ReturnValue += '🤮';
+        // for i := FillCOunt to 36 do
+        //     ReturnValue += '🤢';
+
         ReturnValue := StrSubstNo(ProgressBarTxt, CopyStr(ReturnValue, 1, 18), Format(Percentage, 4, '<Integer>') + '% ', CopyStr(ReturnValue, 19, 18));
     end;
 
