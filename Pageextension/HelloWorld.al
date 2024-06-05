@@ -35,11 +35,13 @@ pageextension 50100 CustomerListExt extends "Customer List"
                 var
                     random: Codeunit RandomAhh;
                     i: Integer;
+                    totalrec: Integer;
                 begin
-                    random.OpenWindow('working #1#######################', false);
-                    for i := 1 to 1200 do begin
-                        random.UpdateWindow(i, 1200);
-                        Sleep(20);
+                    totalrec := 1000;
+                    random.OpenWindow('#1##################################', false);
+                    for i := 1 to totalrec do begin
+                        random.UpdateWindow(i, totalrec);
+                        Sleep(5);
                     end;
                 end;
             }
