@@ -33,7 +33,7 @@ pageextension 50100 CustomerListExt extends "Customer List"
                 Image = Process;
                 trigger OnAction()
                 var
-                    random: Codeunit RandomAhh;
+                    random: Codeunit ProgressBar;
                     i: Integer;
                     totalrec: Integer;
                 begin

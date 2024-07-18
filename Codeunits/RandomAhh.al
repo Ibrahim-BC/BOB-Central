@@ -1,5 +1,6 @@
 codeunit 50100 RandomAhh
 {
+    ///////////  | PROGRESS BAR Ahh 
     procedure ProgressBar(Counter: Integer; MAxValue: Integer): Text
     var
         Percentage: Integer;
@@ -35,6 +36,8 @@ codeunit 50100 RandomAhh
     var
         WindowString: Text;
         ProgressBarPlaceHolderTxt: Label '#20###############################################', Comment = '%20 = Progress Bar Text', Locked = true;
+        itemprogressText: label '\\Item: #30#################################################';
+        TotalitemprogressText: label '\\Total Items: #31#################################################';
         ElapsedTimeTxt: Label '\\Elapsed time :.................. #21#############', Comment = '%21 = Elapsed Time';
         EstimatedTimeLeftTxt: Label '\Estimated time left :...... #22#############', Comment = '%22 = Estimated time left';
         EstimatedEndTimeTxt: label '\Estimated end time :..... #23#############', Comment = '%23 = Calculated End Time';
@@ -47,7 +50,7 @@ codeunit 50100 RandomAhh
         if WindowString = '' then
             WindowString := ProgressBarPlaceHolderTxt
         else
-            WindowString := WindowString + '\\' + ProgressBarPlaceHolderTxt;
+            WindowString := WindowString + '\\' + ProgressBarPlaceHolderTxt + itemprogressText + TotalitemprogressText;
 
         if ShowEstimatedEndTime then begin
             WindowString := WindowString + ElapsedTimeTxt + EstimatedTimeLeftTxt + EstimatedEndTimeTxt;
@@ -73,6 +76,8 @@ codeunit 50100 RandomAhh
             exit;
 
         Window.Update(20, ProgressBar(Counter, NoOfRecords));
+        Window.Update(30, Counter);
+        Window.Update(31, NoOfRecords);
         LastUpdate := CurrentDateTime;
 
         if StartTime = 0DT then
@@ -141,6 +146,13 @@ codeunit 50100 RandomAhh
     procedure OnBeforeGuiAllowed(var Result: Boolean; var Handled: Boolean)
     begin
     end;
+    ///////////   PROGRESS BAR Ahh |  
+
+
+
+
+
+
 
     var
         LastUpdate: DateTime;
