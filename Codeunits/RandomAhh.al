@@ -149,9 +149,71 @@ codeunit 50100 RandomAhh
     ///////////   PROGRESS BAR Ahh |  
 
 
+    procedure ClosestDate(Item: Record Item): Date
+    var
+        PriceListHeader: Record "Price List Header";
+        Pricelistline: Record "Price List Line";
+        RefDate: Date;
+        biggerDate: Date;
+        lowerdate: Date;
+
+        lowerref: Integer;
+        biggerref: Integer;
+    begin
+        RefDate := 20240622D;
+
+        Pricelistline.Reset();
+        Pricelistline.SetRange("Product No.", Item."No.");
+        Pricelistline.SetFilter("Starting Date", '<=%1', RefDate);
 
 
+        if Pricelistline.FindFirst() then begin
+            Message(format(Pricelistline."Starting Date"));
+            lowerdate := Pricelistline."Starting Date";
+        end;
+        Pricelistline.SetFilter("Starting Date", '>=%1', RefDate);
+        Pricelistline.SetCurrentKey("Starting Date");
+        Pricelistline.SetAscending("Starting Date", true);
+        if Pricelistline.FindFirst() then begin
+            Message(format(Pricelistline."Starting Date"));
+            biggerDate := Pricelistline."Starting Date";
+        end;
+        lowerref := RefDate - lowerdate;
+        Message(Format(lowerref));
+        biggerref := biggerDate - RefDate;
+        Message(Format(biggerref));
 
+        if biggerref < lowerref then
+            RefDate := biggerDate
+        else
+            RefDate := lowerdate;
+
+        Message(StrSubstNo('Date is %1', Format(RefDate)));
+        exit(RefDate);
+    end;
+
+    procedure ClosestDate2(Item: Record Item): Date
+    var
+        PriceListHeader: Record "Price List Header";
+        Pricelistline: Record "Price List Line";
+        RefDate: Date;
+        biggerDate: Date;
+        lowerdate: Date;
+
+        lowerref: Integer;
+        biggerref: Integer;
+    begin
+        RefDate := 20240517D;
+
+        Pricelistline.Reset();
+        Pricelistline.SetRange("Product No.", Item."No.");
+        Pricelistline.SetFilter("Starting Date", '<=%1', RefDate);
+        PriceListLine.SetFilter("Ending Date", '>%1|%2', RefDate, 0D);
+        if PriceListLine.FindLast() then
+            message(Format(Pricelistline.SystemRowVersion));
+        if PriceListLine.FindFirst() then
+            message(Format(Pricelistline.SystemRowVersion));
+    end;
 
 
     var

@@ -7,11 +7,13 @@ codeunit 50102 API
 
         Content: HttpContent;//Contenttype Header And Body
         RequestMessage: HttpRequestMessage;//Request Headers And Content
-        ContentHeaders: HttpHeaders;//Request Header ( Content-Type auth )
+        ContentHeaders: HttpHeaders;//Request Header ( Content-Type  )
         ResponseString: Text;
         RequestBody: Text;
         ResponseMessage: HttpResponseMessage; //API Response
         API_links: Record API_LINKS;
+
+        ReqObject: JsonObject;
     begin
 
         //API_links.Get();
@@ -22,8 +24,11 @@ codeunit 50102 API
         // RequestMessage.SetRequestUri(URL);
         //  RequestMessage.Method('POST');
 
+        // RequestBody := '{"email": "eve.holt@reqres.in","password": "cityslicka"}';
 
-        RequestBody := '{"email": "eve.holt@reqres.in","password": "cityslicka"}';
+        ReqObject.Add('email', 'eve.holt@reqres.in');
+        ReqObject.Add('password', 'cityslicka');
+        ReqObject.WriteTo(RequestBody);
         Content.WriteFrom(RequestBody);
 
         Content.GetHeaders(ContentHeaders);
@@ -76,8 +81,8 @@ codeunit 50102 API
         URL: Text;
         Client: HttpClient;//to POST or Get
         Content: HttpContent;//Contenttype Header And Body
-        RequestMessage: HttpRequestMessage;//Request Headers And Content
-        RquestHeaders: HttpHeaders;
+        RequestMessage: HttpRequestMessage;//Request Headers And Content(body)
+        RquestHeaders: HttpHeaders;// mainly for auth
         ContentHeaders: HttpHeaders;//Content's Header ( Content-Type)
         ResponseString: Text;
         RequestBody: Text;
@@ -93,7 +98,7 @@ codeunit 50102 API
         RequestMessage.SetRequestUri(URL);
         RequestMessage.Method('GET');
 
-        RequestMessage.GetHeaders(RquestHeaders);
+        RequestMessage.GetHeaders(RquestHeaders); //httpheader act according to  getheader 
         RquestHeaders.Add('Authorization', 'bearer ' + bearerToken);
 
         Content.GetHeaders(ContentHeaders);
