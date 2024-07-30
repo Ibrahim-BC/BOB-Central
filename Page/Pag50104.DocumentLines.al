@@ -1,23 +1,32 @@
-page 50102 Docment
+page 50104 "Document Lines"
 {
     ApplicationArea = All;
-    Caption = 'Docment';
+    Caption = 'Document Lines';
     PageType = List;
-    SourceTable = Document;
-    CardPageId = DocumentCard;
-    Editable = false;
-
+    SourceTable = DocumentLine;
     UsageCategory = Administration;
-
+    
     layout
     {
         area(Content)
         {
             repeater(General)
             {
-                field(NO; Rec.NO)
+                field("Document Date"; Rec."Document Date")
                 {
-                    ToolTip = 'Specifies the value of the NO field.', Comment = '%';
+                    ToolTip = 'Specifies the value of the Document Date field.', Comment = '%';
+                }
+                field("Document No"; Rec."Document No")
+                {
+                    ToolTip = 'Specifies the value of the Document No field.', Comment = '%';
+                }
+                field("Line No"; Rec."Line No")
+                {
+                    ToolTip = 'Specifies the value of the Line No field.', Comment = '%';
+                }
+                field("Product No"; Rec."Product No")
+                {
+                    ToolTip = 'Specifies the value of the Product No field.', Comment = '%';
                 }
                 field(SystemCreatedAt; Rec.SystemCreatedAt)
                 {
@@ -39,20 +48,11 @@ page 50102 Docment
                 {
                     ToolTip = 'Specifies the value of the SystemModifiedBy field.', Comment = '%';
                 }
-                field(description; Rec.description)
+                field("product type"; Rec."product type")
                 {
-                    ToolTip = 'Specifies the value of the description field.', Comment = '%';
-                }
-                field("issued to"; Rec."issued to")
-                {
-                    ToolTip = 'Specifies the value of the issued to field.', Comment = '%';
-                }
-                field("issued to name"; Rec."issued to name")
-                {
-                    ToolTip = 'Specifies the value of the issued to name field.', Comment = '%';
+                    ToolTip = 'Specifies the value of the product type field.', Comment = '%';
                 }
             }
         }
-
     }
 }
