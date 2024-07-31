@@ -1,6 +1,8 @@
 page 50105 "Document Line subform"
 {
     ApplicationArea = All;
+    //AutoSplitKey = true;
+    // MultipleNewLines = true;
     Caption = 'Document Line subform';
     PageType = ListPart;
     SourceTable = DocumentLine;

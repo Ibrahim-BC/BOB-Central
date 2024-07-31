@@ -52,7 +52,7 @@ table 50102 DocumentLine
     }
     keys
     {
-        key(PK; "Line No")
+        key(PK; "Line No", "Document No")
         {
             Clustered = true;
         }
