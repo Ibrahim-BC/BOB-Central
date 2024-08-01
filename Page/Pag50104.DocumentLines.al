@@ -5,7 +5,7 @@ page 50104 "Document Lines"
     PageType = List;
     SourceTable = DocumentLine;
     UsageCategory = Administration;
-    
+
     layout
     {
         area(Content)
@@ -55,4 +55,11 @@ page 50104 "Document Lines"
             }
         }
     }
+    trigger OnAfterGetRecord()
+    var
+        count: integer;
+    begin
+
+        message(rec."Document No");
+    end;
 }
