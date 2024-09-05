@@ -32,9 +32,20 @@ xmlport 50102 "General ledger entries"
                 fieldelement(SourceNo; GLEntry."Source No.")
                 {
                 }
-                fieldelement(Description; GLEntry.Description)
+                fieldelement(ExternalDocNo; GLEntry."External Document No.")
                 {
+
                 }
+                fieldelement(GlAccount; GLEntry."G/L Account No.") { }
+                fieldelement(globalDim1; GLEntry."Global Dimension 1 Code")
+                {
+
+                }
+                fieldelement(GlobalDim2; GLEntry."Global Dimension 2 Code")
+                {
+
+                }
+
                 fieldelement(Amount; GLEntry.Amount)
                 {
                 }
@@ -56,7 +67,10 @@ xmlport 50102 "General ledger entries"
                     glEntry2.SetRange("Document Date", GLEntry."Document Date");
                     glEntry2.SetRange("Source Type", GLEntry."Source Type");
                     glEntry2.SetRange("Source No.", GLEntry."Source No.");
-                    glEntry2.SetRange(Description, GLEntry.Description);
+                    glEntry2.SetRange("External Document No.", GLEntry."External Document No.");
+                    glEntry2.SetRange("G/L Account No.", GLEntry."G/L Account No.");
+                    glEntry2.SetRange("Global Dimension 1 Code", GLEntry."Global Dimension 1 Code");
+                    glEntry2.SetRange("Global Dimension 2 Code", GLEntry."Global Dimension 2 Code");
                     glEntry2.SetRange(Amount, GLEntry.Amount);
                     if glEntry2.FindFirst() then
                         repeat
@@ -92,5 +106,6 @@ xmlport 50102 "General ledger entries"
     }
     var
         commento: Text;
+        description2: Text;
         glEntry2: Record 17;
 }
