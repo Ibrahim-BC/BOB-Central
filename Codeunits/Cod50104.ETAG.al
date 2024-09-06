@@ -74,7 +74,7 @@
 //                     attrName := ETagTemplate."Serial Name";
 
 //                 end;
-//                 APIResponse := Funcs.updateESLPrice(token, attrCategory, attrName, Format(OldPrice * 100, 0, '<Integer>'), Format(NewPrice * 100, 0, '<Integer>'), Rec."No.", Rec.Description, Format(DiscountPerc * 100, 0, '<Integer>'), ShowMessages);
+//                 APIResponse := Funcs.updateEScLPrice(token, attrCategory, attrName, Format(OldPrice * 100, 0, '<Integer>'), Format(NewPrice * 100, 0, '<Integer>'), Rec."No.", Rec.Description, Format(DiscountPerc * 100, 0, '<Integer>'), ShowMessages);
 //                 AP := SalesSetup."Etag MacAddress";
 //                 APIResponse2 := Funcs.tagBinding(token, ETag."Item No.", ETag."No.", AP, ShowMessages);
 //             until ETag.Next() = 0;
