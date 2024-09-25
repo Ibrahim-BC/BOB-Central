@@ -2,7 +2,7 @@
   "id": "56523c8f-a22a-4a1d-9f4a-b4c670477a48",
   "name": "ALProject4",
   "publisher": "Default Publisher",
-  "version": "1.0.0.2",
+  "version": "1.0.0.3",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -10,7 +10,14 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+    {
+            "id": "ec255f57-31d0-4ca2-b751-f2fa7c745abb",
+            "name": "Shopify Connector",
+            "publisher": "Microsoft",
+            "version": "24.0.0.0"
+        }
+  ],
   "screenshots": [],
   "platform": "1.0.0.0",
   "application": "24.0.0.0",

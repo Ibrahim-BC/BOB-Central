@@ -215,6 +215,13 @@ codeunit 50100 RandomAhh
             message(Format(Pricelistline.SystemRowVersion));
     end;
 
+    local procedure lo()
+    var
+        myInt: Integer;
+
+    begin
+
+    end;
 
     var
         LastUpdate: DateTime;
